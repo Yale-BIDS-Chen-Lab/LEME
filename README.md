@@ -9,7 +9,7 @@ The global burden of eye disease is rising, creating demand for scalable tools t
 
 **LEME** is the first open-weight LLM family for ophthalmology that:
 
-* **Runs on-premise** — No third-party API, compliant with sensitive EHR data.  
+* **Runs on-premise**: No third-party API, compliant with sensitive EHR data.  
 * **Learns via a two-stage pipeline**  
   1. Supervised Fine-Tuning (SFT) using over 200 K clinician-oriented instructions from guidelines, textbooks, and case reports.  
   2. Direct Preference Optimization (DPO) from nearly 30 K preference-labeled samples to maximize factuality, specificity, completeness, and safety.  
@@ -48,6 +48,7 @@ The license will be updated soon.
 
 If you find our work useful, please cite:
 
+```
 @article{kim2024leme,
   title={LEME: Open Large Language Models for Ophthalmology with Advanced Reasoning and Clinical Validation},
   author={Kim, Hyunjae and Ai, Xuguang and Srinivasan, Sahana and Gilson, Aidan and Singer, Maxwell B and Pushpanathan, Krithi and Xie, Qianqian and Park, Jungwoo and Applebaum, Serina and Dawei Yang, Gabriel and others},
@@ -55,3 +56,4 @@ If you find our work useful, please cite:
   pages={arXiv--2410},
   year={2024}
 }
+```
