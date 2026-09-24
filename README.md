@@ -43,7 +43,7 @@ We'll release the updated code on GitHub soon!
 
 ## License
 
-LEME code, models, data, and other related materials may be used for non-commercial research purposes. Any derivative works must be made publicly available through a public platform, such as GitHub or Hugging Face. For commercial-use inquiries, please contact us (``agreements@yale.edu'' or ``qingyu.chen@yale.edu''). Please see the LICENSE file for the full terms.
+LEME code, models, data, and other related materials may be used for non-commercial research purposes. Any derivative works must be made publicly available through a public platform, such as GitHub or Hugging Face. For commercial-use inquiries, please contact us (``agreements at yale dot edu`` or ``qingyu.chen at yale dot edu``). Please see the LICENSE file for the full terms.
 
 ## Citation
 
