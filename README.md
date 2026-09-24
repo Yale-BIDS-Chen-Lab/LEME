@@ -42,7 +42,8 @@ We'll release the updated code on GitHub soon!
 > LEME models rank **1st or 2nd on average**, demonstrating state-of-the-art performance in ophthalmology-specific reasoning, patient education, and research assistance while remaining fully open-weight and deployable on-premise.
 
 ## License
-See LICENSE for details.
+
+LEME code, models, data, and other related materials may be used for non-commercial research purposes. Any derivative works must be made publicly available through a public platform, such as GitHub or Hugging Face. For commercial-use inquiries, please contact us (``agreements@yale.edu'' or ``qingyu.chen@yale.edu''). Please see the LICENSE file for the full terms.
 
 ## Citation
 
