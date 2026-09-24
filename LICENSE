@@ -1,0 +1,42 @@
+Non-Commercial License
+
+Copyright © 2025 Yale University
+
+For purposes of this Agreement, “Licensed Materials” means the source code, models 
+(including model weights), data, and documentation made available by Licensor under 
+this Agreement. This Agreement applies only to rights held by Licensor; any third-party 
+materials remain subject to their applicable terms.
+
+Permission is hereby granted, by Yale University
+(“Licensor”), to use, copy, modify, and distribute the Licensed Materials for
+any non-commercial research purpose. Any distribution or modification or
+derivation of the Licensed Materials (together “Derivative Works”) must be
+made available on a publicly accessible repository, such as GitHub or Hugging
+Face. An unmodified copy of the above copyright notice and this Agreement
+must be included and presented with all copies, substantial portions, and
+Derivative Works. For the purposes of this Agreement, "non-commercial" means
+not intended for or directed towards commercial advantage or monetary
+compensation either via the Licensed Materials themselves or Derivative
+Works or uses of either which lead to or generate any commercial products. Any
+commercial use of the Licensed Materials is not permitted under this
+Agreement and requires a separate commercial and patent license from Yale
+University. Direct any requests for commercial licenses to Yale Ventures at
+[agreements@yale.edu](mailto:agreements@yale.edu).
+
+THE LICENSED MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY
+OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE LICENSED MATERIALS OR THE USE
+OR OTHER DEALINGS IN THE LICENSED MATERIALS.
+
+This is a legal agreement between You and Licensor. By
+accepting, receiving, and/or using the Licensed Materials, you are agreeing
+to be bound by the terms of this Agreement. If you do not agree to the terms of
+this Agreement, no license in the Licensed Materials is granted, and you
+must destroy, delete or otherwise remove your copy of the Licensed Materials
+and any portion thereof. In the event of conflict with any other agreement(s)
+or license(s), this Agreement shall take precedence with respect to the
+Licensed Materials, and the use and modification of the Licensed
+Materials shall remain governed by the terms and conditions of this Agreement.
