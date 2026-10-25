@@ -1,0 +1,4 @@
+bert-score==0.3.13
+transformers==4.51.3
+rouge-score==0.1.2
+numpy>=1.24,<3

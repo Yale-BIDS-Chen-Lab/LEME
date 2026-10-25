@@ -142,7 +142,7 @@ assistance. Publicly released tasks are grouped in
 | Patient QA · AAO | 76 | Not distributed due to licensing restrictions |
 | Public Eye Health QA · NEI/NIH | 281 | `public_eye_health_qa` |
 | Patient Consultation · iCliniq | 303 | `patient_consultation` |
-| Treatment Planning · EyeRounds | 245 | Not distributed; redistribution permission was not granted |
+| Treatment Planning · EyeRounds | 245 | Not distributed due to licensing restrictions |
 | Abstract-to-Title Generation · PubMed | 500 | `title_prediction` |
 
 Run a public benchmark with the study's task instructions and greedy decoding:
@@ -156,9 +156,21 @@ python -m evaluation.run \
   --output model_predictions/leme-sft/patient_consultation.jsonl
 ```
 
-The runner saves predictions and ROUGE-L F1. See the
-[evaluation guide](evaluation/README.md) for all tasks, local-file inputs,
-and hardware options.
+The runner saves predictions and ROUGE-L F1. Compute BERTScore from the saved
+responses after inference:
+
+```bash
+pip install -r requirements-scoring.txt
+python -m evaluation.score \
+  --predictions model_predictions/leme-sft/patient_consultation.jsonl \
+  --batch-size 16
+```
+
+The scorer reports mean ROUGE-L F1 and BERTScore precision, recall, and F1,
+and saves per-example scores. It uses RoBERTa-large with the English BERTScore
+defaults. Add `--bootstrap-samples 10000` for percentile 95% confidence intervals.
+See the [evaluation guide](evaluation/README.md) for scoring settings,
+local-file inputs, and hardware options.
 
 ![Comparison of LEME and baseline models across the five study benchmarks](assets/figure_2_.png)
 
@@ -179,7 +191,7 @@ python -m leme.training.prepare_data --output-dir data/training
 | --- | --- |
 | Prepare SFT/DPO data and run the DPO training example | [Training guide](leme/training/README.md) |
 | Select corpus text, generate and refine instructions, and construct preference pairs | [Data-construction guide](leme/data_generation/README.md) |
-| Generate benchmark predictions and compute ROUGE-L | [Evaluation guide](evaluation/README.md) |
+| Generate benchmark predictions and compute ROUGE-L and BERTScore | [Evaluation guide](evaluation/README.md) |
 
 ## Citation
 
@@ -213,5 +225,6 @@ See [NOTICE](NOTICE) for source-code attribution and retained upstream licenses.
 ## Contact
 
 For general inquiries, please contact Hyunjae Kim at `hyunjae.kim@yale.edu`.
+
 
 

@@ -3,8 +3,10 @@
 import argparse
 import json
 from pathlib import Path
+from statistics import fmean
 
 from evaluation.data import TASKS, load_benchmark, make_prompt
+from evaluation.metrics import rouge_l_scores
 from leme.inference import resolve_model
 from leme.io import write_json, write_jsonl
 
@@ -34,7 +36,6 @@ def main():
     if not rows:
         parser.error("No benchmark examples found")
 
-    from rouge_score import rouge_scorer
     from vllm import LLM, SamplingParams
 
     llm = LLM(
@@ -57,9 +58,8 @@ def main():
     if len(outputs) != len(rows):
         raise RuntimeError("Prediction count does not match benchmark size")
     predictions = [{**row, "prediction": output.outputs[0].text} for row, output in zip(rows, outputs)]
-    scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
-    score = sum(scorer.score(row["reference"], row["prediction"])["rougeL"].fmeasure
-                for row in predictions) / len(predictions)
+    score = fmean(rouge_l_scores([row["prediction"] for row in predictions],
+                                [row["reference"] for row in predictions]))
     write_jsonl(args.output, predictions)
     metrics = {"model": resolve_model(args.model), "task": args.task,
                "examples": len(predictions), "rougeL_f1": score}
