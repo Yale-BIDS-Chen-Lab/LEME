@@ -40,7 +40,7 @@ and the benchmarks used to evaluate it.
 | --- | --- | --- |
 | [LEME-Corpus](https://huggingface.co/datasets/Yale-BIDS-Chen/LEME-Corpus) | 22,099 ophthalmology guideline snippets, StatPearls snippets, and published case summaries | `guidelines`, `statpearls`, `cases` |
 | [LEME-Training-Data](https://huggingface.co/datasets/Yale-BIDS-Chen/LEME-Training-Data) | 211,149 SFT examples and 29,747 DPO pairs | `sft`, `dpo` |
-| [LEME-Benchmarks](https://huggingface.co/datasets/Yale-BIDS-Chen/LEME-Benchmarks) | 1,084 examples across three publicly released tasks | `public_eye_health_qa`, `patient_consultation`, `title_prediction` |
+| [LEME-Benchmarks](https://huggingface.co/datasets/Yale-BIDS-Chen/LEME-Benchmarks) | 803 examples across two publicly released tasks | `patient_consultation`, `title_prediction` |
 
 The corpus contains ophthalmology-specific subsets selected from broader
 clinical guideline, StatPearls, and published case-report collections.
@@ -109,7 +109,7 @@ Use `--model leme-dpo` to select LEME-DPO.
 
 ### Load the data
 
-All datasets can be loaded directly from Hugging Face:
+Released datasets can be loaded directly from Hugging Face:
 
 ```python
 from datasets import load_dataset
@@ -124,7 +124,7 @@ dpo = load_dataset(
     "Yale-BIDS-Chen/LEME-Training-Data", "dpo", split="train"
 )
 benchmark = load_dataset(
-    "Yale-BIDS-Chen/LEME-Benchmarks", "public_eye_health_qa", split="test"
+    "Yale-BIDS-Chen/LEME-Benchmarks", "patient_consultation", split="test"
 )
 ```
 
@@ -140,7 +140,7 @@ assistance. Publicly released tasks are grouped in
 | Task | Examples | Public data |
 | --- | ---: | --- |
 | Patient QA · AAO | 76 | Not distributed due to licensing restrictions |
-| Public Eye Health QA · NEI/NIH | 281 | `public_eye_health_qa` |
+| Public Eye Health QA · NEI/NIH | 281 | Not distributed; redistribution permission was not granted |
 | Patient Consultation · iCliniq | 303 | `patient_consultation` |
 | Treatment Planning · EyeRounds | 245 | Permission inquiry in progress; data not included |
 | Abstract-to-Title Generation · PubMed | 500 | `title_prediction` |
@@ -150,10 +150,10 @@ Run a public benchmark with the study's task instructions and greedy decoding:
 ```bash
 pip install -r requirements-evaluation.txt
 python -m evaluation.run \
-  --task public_eye_health_qa \
+  --task patient_consultation \
   --model leme-sft \
   --tensor-parallel-size 2 \
-  --output model_predictions/leme-sft/public_eye_health_qa.jsonl
+  --output model_predictions/leme-sft/patient_consultation.jsonl
 ```
 
 The runner saves predictions and ROUGE-L F1. See the
@@ -213,3 +213,4 @@ See [NOTICE](NOTICE) for source-code attribution and retained upstream licenses.
 ## Contact
 
 For general inquiries, please contact Hyunjae Kim at `hyunjae.kim@yale.edu`.
+
