@@ -9,7 +9,8 @@ python -m evaluation.run --task patient_consultation --model leme-sft \
 
 The runner downloads the selected configuration from
 [LEME-Benchmarks](https://huggingface.co/datasets/Yale-BIDS-Chen/LEME-Benchmarks).
-Available configurations are `patient_consultation` and `title_prediction`. Use `--model leme-dpo` for the preference-tuned model.
+Available configurations are `public_eye_health_qa`, `patient_consultation`,
+and `title_prediction`. Use `--model leme-dpo` for the preference-tuned model.
 
 Inference uses the checkpoint's chat template, BF16 weights, temperature 0,
 the Llama end-of-turn token, and at most 1,024 generated tokens. QA and title
@@ -24,8 +25,8 @@ and clinical evaluations; those are separate from this runner.
 ## Local benchmark files
 
 AAO Patient QA is not distributed because of licensing restrictions.
-NEI/NIH did not grant permission to redistribute Public Eye Health QA.
-EyeRounds Treatment Planning is pending redistribution permission. To evaluate
+EyeRounds Treatment Planning is not distributed because redistribution
+permission was not granted. To evaluate
 these tasks, supply a local file you are authorized to use:
 
 ```bash
@@ -37,4 +38,5 @@ python -m evaluation.run --task treatment_planning --model leme-sft \
 Local JSON arrays and JSONL files can use `input`/`reference`. The original
 archive's `query`/`answer`, `question`/`answer`, and treatment `input`/`output`
 fields are also accepted. Use `--limit 5` to check a small batch first.
+
 
