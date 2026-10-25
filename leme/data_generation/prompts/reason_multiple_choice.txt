@@ -1,0 +1,10 @@
+The following are multiple choice questions about medical knowledge. Solve them in a step-by-step fashion, starting by summarizing the available information. Output your explanation and single option from the four options as the final answer. You are required to use the phrase "## Answer:" at the end of your response. Strictly adhere the output format. See the below example. 
+## Explanation: {{your step-by-step explanation here}}.
+## Answer: {{either A, B, C, or D}}
+If you identify a flaw in the question, please respond with "## Answer: None".
+
+This is the input question to solve.
+
+## Question: {question}
+
+## Explanation:

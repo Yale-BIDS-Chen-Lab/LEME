@@ -1,0 +1,23 @@
+# Example for eight 80 GB A100 GPUs; configure distributed execution separately.
+model_name_or_path: Yale-BIDS-Chen/LEME-SFT-70B
+stage: dpo
+do_train: true
+finetuning_type: full
+deepspeed: leme/training/configs/ds_zero3_offload.json
+dataset_dir: data/training
+dataset: leme_dpo
+template: llama3
+overwrite_cache: true
+preprocessing_num_workers: 32
+output_dir: saves/leme-dpo
+logging_steps: 10
+save_steps: 300
+overwrite_output_dir: false
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 5.0e-7
+num_train_epochs: 1.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.04
+bf16: true
+ddp_timeout: 180000000

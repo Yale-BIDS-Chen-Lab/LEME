@@ -1,26 +1,110 @@
-# LEME :globe_with_meridians: — Open Large Language Models for Ophthalmology with Advanced Reasoning and Clinical Validation
-![Figure 1](assets/figure_1_.png)
+# LEME: Open Large Language Models for Ophthalmology with Advanced Reasoning and Clinical Validation
 
-> **Figure 1. Overview of study design.**  
-> a, LEME enables secure, on-premise deployment, addressing privacy and customization limitations of proprietary LLMs. b, Compared to prior models, LEME is open-weight, preference-tuned, and clinically validated. c, Training data comprises 211K instructions derived from ophthalmology corpora and clinician-authored instructions. d, Two-stage training: supervised fine-tuning (SFT) followed by direct preference optimization (DPO). e, Evaluation covers five ophthalmology-specific benchmarks, including four clinically relevant tasks and one research assistant task. f-h, Downstream validation includes real patient data and manual specialist review.
+[Paper](https://doi.org/10.1038/s41746-026-03104-4) · [Models and datasets](https://huggingface.co/Yale-BIDS-Chen)
 
-## Overview
-The global burden of eye disease is rising, creating demand for scalable tools that reduce documentation workload and support clinical decision-making. Existing ophthalmology-focused LLMs are not open-weight and seldom validated beyond knowledge-based QA.
+LEME is a family of open-weight ophthalmology language models based on
+Meta-Llama-3-70B-Instruct. LEME-SFT uses 211,149 instruction examples derived
+from ophthalmology guidelines, StatPearls, and published case reports.
+LEME-DPO further aligns responses using 29,747 preference pairs evaluated
+for truthfulness and informativeness.
 
-**LEME** is the first open-weight LLM family for ophthalmology that:
+![Study design](assets/figure_1_.png)
 
-* **Runs on-premise**: No third-party API, compliant with sensitive EHR data.  
-* **Learns via a two-stage pipeline**  
-  1. Supervised Fine-Tuning (SFT) using over 200 K clinician-oriented instructions from guidelines, textbooks, and case reports.  
-  2. Direct Preference Optimization (DPO) from nearly 30 K preference-labeled samples to maximize factuality, specificity, completeness, and safety.  
-* **Is rigorously benchmarked** on five curated ophthalmology tasks (patient QA, public eye-health QA, patient consultation, treatment planning, and abstract-to-title generation) and three downstream applications (patient query answering, visual-acuity extraction, assessment and treatment planning).  
-* **Outperforms seven baselines** (incl. GPT-4o) on all benchmarks (average ROUGE-L +3.32 pp) and receives top specialist ratings (factuality 4.67, completeness 4.79, safety 4.88) on patient query answering.
+The study combines ophthalmology corpus selection, instruction tuning,
+preference optimization, five open-ended benchmarks, and downstream clinical
+validation. The code below supports model inference, public benchmark
+prediction, and training-data preparation and generation.
 
+## Resources
 
-## Quick Start
-We'll release the updated code on GitHub soon!
+| Resource | Content |
+| --- | --- |
+| [LEME-SFT-70B](https://huggingface.co/Yale-BIDS-Chen/LEME-SFT-70B) | 70B model after supervised fine-tuning |
+| [LEME-DPO-70B](https://huggingface.co/Yale-BIDS-Chen/LEME-DPO-70B) | 70B model after preference optimization |
+| [LEME-Corpus](https://huggingface.co/datasets/Yale-BIDS-Chen/LEME-Corpus) | 3,435 guideline snippets, 12,919 StatPearls snippets, and 5,745 case summaries |
+| [LEME-Training-Data](https://huggingface.co/datasets/Yale-BIDS-Chen/LEME-Training-Data) | SFT: 211,149 instructions; DPO: 29,747 preference pairs |
+| [LEME-Benchmarks](https://huggingface.co/datasets/Yale-BIDS-Chen/LEME-Benchmarks) | Public Eye Health QA, Patient Consultation, and Abstract-to-Title Generation; 1,084 examples |
+
+The paper evaluates five benchmark tasks. AAO Patient QA is not distributed
+because of licensing restrictions. Redistribution permission for EyeRounds
+Treatment Planning is being sought; its data are not included in the public
+benchmark repository.
+
+## Installation
+
+Use Python 3.10 or 3.11 and an environment suitable for running a BF16 70B model.
+
+```bash
+pip install -r requirements.txt
+```
+
+Install `requirements-evaluation.txt` for vLLM benchmark inference, or
+`requirements-generation.txt` for the Azure OpenAI data-generation examples.
+
+## Quick start
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_id = "Yale-BIDS-Chen/LEME-SFT-70B"  # or Yale-BIDS-Chen/LEME-DPO-70B
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(
+    model_id, torch_dtype="auto", device_map="auto",
+)
+messages = [{"role": "user", "content": "Explain the difference between dry and wet AMD."}]
+inputs = tokenizer.apply_chat_template(
+    messages, add_generation_prompt=True, return_dict=True, return_tensors="pt"
+).to(model.device)
+outputs = model.generate(**inputs, max_new_tokens=512, do_sample=False)
+print(tokenizer.decode(outputs[0][inputs["input_ids"].shape[-1]:], skip_special_tokens=True))
+```
+
+The same inference flow is available from the command line:
+
+```bash
+python -m leme.inference --model leme-sft --prompt "Explain the difference between dry and wet AMD."
+```
+
+Use `--model leme-dpo` for the preference-tuned model. The model card examples
+and this quick start use the checkpoint's chat template and greedy decoding.
+
+## Benchmark inference
+
+```bash
+pip install -r requirements-evaluation.txt
+python -m evaluation.run --task public_eye_health_qa --model leme-sft \
+  --output model_predictions/leme-sft/public_eye_health_qa.jsonl
+```
+
+The runner also supports `patient_consultation` and `title_prediction` from
+Hugging Face. It uses the study's task instructions, temperature 0, and up to
+1,024 generated tokens, and saves predictions and ROUGE-L F1. See
+[evaluation/README.md](evaluation/README.md) for local-file evaluation,
+hardware options, and the unavailable benchmark tasks.
+
+## Data preparation and training
+
+Load the released training configurations directly:
+
+```python
+from datasets import load_dataset
+sft = load_dataset("Yale-BIDS-Chen/LEME-Training-Data", "sft", split="train")
+dpo = load_dataset("Yale-BIDS-Chen/LEME-Training-Data", "dpo", split="train")
+```
+
+To prepare files and dataset definitions for LLaMA-Factory:
+
+```bash
+python -m leme.training.prepare_data --output-dir data/training
+```
+
+See [training instructions](leme/training/README.md) for the DPO example
+configuration, and [data construction](leme/data_generation/README.md) for
+corpus selection, instruction generation, consistency filtering, and
+preference-pair construction with the original prompts.
 
 ## Benchmarks & Results
+
 
 | # | Benchmark (open-ended) | Data Size | What It Measures | Key Take-away |
 |---|-----------------------|-----------|------------------|---------------|
@@ -39,22 +123,27 @@ We'll release the updated code on GitHub soon!
 - Best publicly available baseline (LLaMA-3 70B): 0.1281 / 0.8354  
 - Best proprietary baseline (GPT-4o): 0.1828 / 0.8422  
 
-> LEME models rank **1st or 2nd on average**, demonstrating state-of-the-art performance in ophthalmology-specific reasoning, patient education, and research assistance while remaining fully open-weight and deployable on-premise.
+See the paper for the complete benchmark and clinical evaluation results.
+
+## Contact
+
+For general inquiries, please contact Hyunjae Kim at `hyunjae.kim@yale.edu`.
 
 ## License
 
-LEME code, models, data, and other related materials may be used for non-commercial research purposes. Any derivative works must be made publicly available through a public platform, such as GitHub or Hugging Face. For commercial-use inquiries, please contact us (``agreements@yale.edu`` or ``qingyu.chen@yale.edu``). Please see the LICENSE file for the full terms.
+LEME code, models, data, and other related materials may be used for non-commercial research purposes. Any derivative works must be made publicly available through a public platform, such as GitHub or Hugging Face. For commercial-use inquiries, please contact us (`agreements@yale.edu` or `qingyu.chen@yale.edu`). Please see the [LICENSE file](LICENSE) for the full terms.
+
+Model and dataset repositories preserve their applicable third-party terms.
+See [NOTICE](NOTICE) for source-code attribution and retained upstream licenses.
 
 ## Citation
 
-If you find our work useful, please cite:
-
-```
-@article{kim2024leme,
-  title={LEME: Open Large Language Models for Ophthalmology with Advanced Reasoning and Clinical Validation},
-  author={Kim, Hyunjae and Ai, Xuguang and Srinivasan, Sahana and Gilson, Aidan and Singer, Maxwell B and Pushpanathan, Krithi and Xie, Qianqian and Park, Jungwoo and Applebaum, Serina and Dawei Yang, Gabriel and others},
-  journal={arXiv e-prints},
-  pages={arXiv--2410},
-  year={2024}
+```bibtex
+@article{kim2026leme,
+  title={LEME: open large language models for ophthalmology with advanced reasoning and clinical validation},
+  author={Kim, Hyunjae and Ai, Xuguang and Srinivasan, Sahana and Gilson, Aidan and Singer, Maxwell B and Pushpanathan, Krithi and Xie, Qianqian and Park, Jungwoo and Applebaum, Serina and Yang, Gabriel Dawei and others},
+  journal={npj Digital Medicine},
+  year={2026},
+  publisher={Nature Publishing Group UK, London}
 }
 ```

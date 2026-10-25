@@ -1,0 +1,20 @@
+You are given a query and a less informative medical response.
+Your task is to increase the informativeness of the response by enriching it with essential, specific, and directly relevant medical details, while keeping the overall structure, tone, and length of the original response similar.
+
+Follow these rules:
+
+1. Maintain the original sentence structure and overall length as much as possible.
+2. Replace vague or generalized statements with specific clinical facts, findings, or actionable recommendations that are essential for fully addressing the query.
+3. Avoid adding irrelevant or overly verbose content—focus on clarity, completeness, and usefulness.
+4. The final response should be medically accurate, directly informative, and better fulfill the informational needs of the query.
+
+===
+
+Your response should only consist of the more informative version.
+
+Now, generate the more informative answer for the following:
+
+# Query: {question}
+# Original Response: {ground_truth_answer}
+{explanation}
+More Informative Answer:

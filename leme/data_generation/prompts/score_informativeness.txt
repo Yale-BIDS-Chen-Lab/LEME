@@ -1,0 +1,22 @@
+# Informativeness Assessment
+
+Evaluate if model’s outputs fulfill task objectives and provide high-quality content. Informativeness assessment emphasizes the following aspects:
+- Conciseness: The degree to which information is conveyed succinctly, containing only essential details while eliminating unnecessary redundancy or verbosity.
+- Completeness: Ensuring that all essential information is included without omissions, fully addressing the inquiry.
+- Usefulness: Prioritizing direct and specific information over general or indirect responses to effectively aid in problem-solving.
+
+Score 1 to 5 based on extent of informativeness:
+1. Severely Uninformative: The output misses most essential information and is overly verbose, making it difficult to understand.
+2. Inadequately Informative: Some essential information is included, but key elements are missing, making the content incomplete and confusing.
+3. Sufficiently Informative: All essential information is included concisely, meeting the basic requirements.
+4. Highly Informative: All essential information is clearly and concisely provided, fully satisfying the requirements with minimal omissions.
+5. Exceptionally Informative: The essential information is conveyed perfectly and concisely, maximizing clarity and understanding.
+
+Provide your score only with explanations. Your output should strictly adhere to the following format:
+# Score: {your_score}
+# Explanation: {explanation}
+
+Here is the question and model response.
+
+-----
+

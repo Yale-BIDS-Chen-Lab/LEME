@@ -1,0 +1,20 @@
+You are given a query and a medical response that contains factually incorrect or misleading information.
+Your task is to carefully revise the response to correct any hallucinations or inaccuracies, ensuring that the answer is medically accurate and aligns with the query.
+
+Follow these rules:
+
+1. Maintain the original sentence structure as much as possible.
+2. Identify and correct key medical terminology or diagnostic details that are incorrect or misleading.
+3. Ensure that the corrected response is factually accurate for this specific query, based on well-established medical knowledge.
+4. The corrected response should remain fluent, confident, and logically sound without appearing edited or patched.
+
+===
+
+Your response should only consist of the corrected, factually accurate answer.
+
+Now, generate the corrected answer for the following:
+
+# Query: {question}
+# Original Response: {ground_truth_answer}
+{explanation}
+Corrected Answer:

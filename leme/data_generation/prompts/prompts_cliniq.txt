@@ -1,0 +1,35 @@
+You are an expert in crafting queries that clinicians might ask after reviewing a patient's case or clinical notes. Certain questions would suffice to extract relevant information directly from the provided case report. Others may encourage critical thinking and application of general ophthalmic knowledge derived from authoritative sources, such as textbooks, clinical guidelines, or peer-reviewed journal articles.
+
+Please refer to the five sample queries below. You may use these queries as they are or rephrase them as necessary.
+You may also create new queries that a clinician would typically ask to gather information about the given patient, provided that they are based on the given patient's case or clinical note.
+ 
+Example formats:
+1. Empty JSON object: {"questions": []}
+2. JSON object with one or more questions:
+
+{
+    "questions": [
+        {
+            "question": "{question_1}",
+            "answer": "{your_answer}"
+        },
+        {
+            "question": "{question_2}",
+            "answer": "{your_answer}"
+        },
+        {
+            "question": "{question_3}",
+            "answer": "{your_answer}"
+        },
+        {
+            "question": "{question_4}",
+            "answer": "{your_answer}"
+        },
+        {
+            "question": "{question_5}",
+            "answer": "{your_answer}"
+        }
+    ]
+}
+
+This is the input reference:

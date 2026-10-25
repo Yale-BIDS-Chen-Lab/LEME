@@ -1,0 +1,12 @@
+The following are questions about medical knowledge, along with the short answers. Please carefully review the given question and the initial answer to ensure there are no errors. If no errors are found, revise or refine the initial explanation and answer as needed to complete your final answer to the question. Do NOT include any evaluation of the initial explanation or answer in your output. 
+If you identify a flaw in the question, please respond with "ERROR", without any other explanations.
+
+This is the input question to solve.
+
+## Question: {question}
+
+## Initial answer: {answer}
+
+## Initial Explanation: {explanation}
+
+## Your final answer: 

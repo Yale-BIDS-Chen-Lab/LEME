@@ -1,0 +1,10 @@
+The following are single-turn conversations between a patient and a doctor. Please carefully review the doctor's response to ensure there are no errors. 
+If you identify a flaw in the question, please respond only with "error"; otherwise, respond only with "valid". You are NOT required to provide any explanations.
+
+This is the input.
+
+## Patient: {question}
+
+## Response: {answer}
+
+## Your review: 

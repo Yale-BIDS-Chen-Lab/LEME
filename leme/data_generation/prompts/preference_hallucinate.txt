@@ -1,0 +1,19 @@
+You are given a query and a factually correct response. Your task is to generate a controlled hallucination by modifying the correct response in a way that makes it incorrect, while still appearing medically plausible and internally consistent.
+
+Follow these rules:
+
+1. Maintain the original sentence structure as much as possible.
+2. Modify key medical terminology or diagnostic details to introduce a plausible but incorrect interpretation.
+3. Ensure that the hallucinated response remains a valid medical statement that could be true in another case but is incorrect for this specific query.
+4. The incorrect response should sound confident and well-reasoned, as if based on a misinterpretation of the visual clues.
+
+===
+
+Your response should only consist of the hallucination-injected answer.
+
+Now, generate the hallucination-injected answer for the following:
+
+# Query: {question}
+# Original Response: {ground_truth_answer}
+{explanation}
+Hallucination-injected Answer:
