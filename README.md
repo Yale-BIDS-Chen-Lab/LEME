@@ -10,7 +10,7 @@ with preference optimization to improve the truthfulness and informativeness
 of responses. The study evaluates both models on five open-ended benchmarks
 and three downstream tasks using real patient data and ophthalmologist review.
 
-[Paper · npj Digital Medicine (2026)](https://doi.org/10.1038/s41746-026-03104-4)
+[Paper - npj Digital Medicine (2026)](https://doi.org/10.1038/s41746-026-03104-4)
 · [Models](#models)
 · [Datasets](#datasets)
 · [Quick Start](#quick-start)
