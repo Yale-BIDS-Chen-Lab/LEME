@@ -1,0 +1,100 @@
+You are an expert in crafting multiple-choice questions in the field of ophthalmology. You will be provided with reference material. Your task is to extract key ophthalmic concepts (e.g., named entities, phrases, quantities, sentences, or combinations of these) from the reference material and modify or combine them appropriately to serve as the correct answers. You will then generate diverse multiple-choice questions covering a wide range of ophthalmic topics. Each question must include a correct answer along with three plausible distractor options. The distractors should be related to the correct answer but should not require excessively detailed or specialized ophthalmic knowledge to discern. Ensure that your questions cover a wide range of ophthalmic topics, spanning the following categories:
+
+Histology/Pathology
+Diagnostic Tools/Methods
+Age/Epidemiology
+Clinical Signs/Features
+Differential Diagnosis
+Anatomy
+Procedures/Surgeries/Technology
+Pharmacology/Medications/Dosage
+Genetics
+Neuro-ophthalmology
+Syndromes/Disease Associations
+Treatment/Management
+Visual Field Defects
+Imaging Findings
+Pathophysiology
+Nomenclature/Disease Classification
+Others
+
+The questions must not be directly answerable by referencing the provided context alone but should encourage critical thinking and application of general ophthalmic knowledge derived from authoritative sources, such as textbooks, clinical guidelines, or peer-reviewed journal articles. If the provided reference material lacks sufficient or relevant information to formulate meaningful ophthalmology questions, do not create any questions. Your questions should be accessible and based on foundational ophthalmic concepts, **avoiding reliance on niche studies or highly specialized content**. If no meaningful questions can be generated, return an empty JSON object: {"questions": []}. Otherwise, structure your output as a single JSON object containing an array under the "questions" key, where each element is a JSON object with the following fields:
+
+"category": The category of the question (e.g., Histology/Pathology, Diagnostic Tools/Methods, Age/Epidemiology, Clinical Signs/Features, Differential Diagnosis, Anatomy, etc.)
+"question": The formulated multiple-choice question
+"options": A list of four answer options labeled A, B, C, D
+"answer": The correct answer label (A, B, C, or D)
+"explanation": A brief explanation that justifies the correct answer
+
+Ensure that your questions require more than just referencing the provided text; they should encourage critical thinking and application of general ophthalmic knowledge. Do not include questions that can be directly answered using the specific reference material alone.
+
+Example formats:
+1. Empty JSON object: {"questions": []}
+2. JSON object with one or more questions:
+
+{
+    "questions": [
+        {
+            "category": "Genetics",
+            "question": "From what embryonic layer are the sphincter and dilator muscles of the iris derived?",
+            "options": {
+                "A": "endoderm",
+                "B": "surface ectoderm",
+                "C": "neuroectoderm",
+                "D": "mesoderm"
+            },
+            "explanation": "The sphincter and dilator muscles of the iris are derived from the neuroectoderm. During embryological development, the neuroectoderm gives rise to the retina, optic nerve, and muscles of the iris. This is important because the neuroectoderm is also responsible for forming other neural structures in the eye, making it crucial for proper ocular function. The other options, such as endoderm, surface ectoderm, and mesoderm, contribute to different structures in the eye but not to the iris muscles.",
+            "answer": "C"
+        },
+        {
+            "category": "Pharmacology/Medications/Dosage",
+            "question": "What is the mechanism of iris color change with topical prostaglandin analogue use?",
+            "options": {
+                "A": "increased number of melanosomes within melanocytes",
+                "B": "proliferation of melanocytes",
+                "C": "increased size of melanosomes within melanocytes",
+                "D": "increased melanin production"
+            },
+            "explanation": "Topical prostaglandin analogues, used primarily for glaucoma treatment, can cause an increase in iris pigmentation. The mechanism involves an increased number of melanosomes within the melanocytes rather than an increase in the number of melanocytes themselves. This change is typically seen as a gradual darkening of the iris color over time, especially in individuals with mixed-color irises. Proliferation of melanocytes or increased melanin production are not involved in this process.",
+            "answer": "A"
+        },
+        {
+            "category": "Diagnostic Tools/Methods",
+            "question": "What is the most sensitive imaging study for detecting calcified optic disc drusen?",
+            "options": {
+                "A": "B-scan ultrasonography",
+                "B": "fluorescein angiography",
+                "C": "computed tomography (CT) orbit",
+                "D": "autofluorescence photography"
+            },
+            "explanation": "B-scan ultrasonography is the most sensitive imaging modality for detecting calcified optic disc drusen. These drusen are typically buried within the optic nerve head and can be difficult to detect on fundoscopic examination alone. B-scan ultrasonography provides a high-resolution image that can reveal the calcifications characteristic of optic disc drusen, even when they are not visible on other imaging studies. While CT scans can also detect calcifications, B-scan ultrasonography is more specific and sensitive for this purpose.",
+            "answer": "A"
+        },
+        {
+            "category": "Treatment/Management",
+            "question": "What is the most appropriate first-line treatment for mild to moderate scleritis?",
+            "options": {
+                "A": "topical nonsteroidal anti-inflammatory therapy",
+                "B": "intraocular corticosteroids",
+                "C": "oral nonsteroidal anti-inflammatory therapy",
+                "D": "topical cyclosporine"
+            },
+            "explanation": "The most appropriate first-line treatment for mild to moderate scleritis is oral nonsteroidal anti-inflammatory therapy (NSAIDs). Scleritis is an inflammatory condition of the sclera, often associated with systemic autoimmune diseases. Oral NSAIDs are effective in reducing inflammation and pain in less severe cases. Topical NSAIDs are generally ineffective for treating scleritis due to the depth of the inflammation, and intraocular corticosteroids are reserved for more severe cases or when NSAIDs are contraindicated. Topical cyclosporine is typically used for dry eye syndrome and is not effective in treating scleritis.",
+            "answer": "C"
+        },
+        {
+            "category": "Procedures/Surgeries/Technology",
+            "question": "What is the principal drawback to using a dermis-fat graft for acquired anophthalmos in adults?",
+            "options": {
+                "A": "high extrusion rate",
+                "B": "high infection rate",
+                "C": "donor site morbidity",
+                "D": "unpredictable reabsorption of volume"
+            },
+            "explanation": "The principal drawback to using a dermis-fat graft for acquired anophthalmos in adults is the unpredictable reabsorption of volume. Dermis-fat grafts are used to provide soft tissue bulk in anophthalmic sockets, but over time, the graft can undergo unpredictable reabsorption, leading to volume loss and asymmetry. High extrusion and infection rates are less common concerns with this type of graft, and while donor site morbidity is a consideration, it is not as significant a drawback as the issue of volume reabsorption.",
+            "answer": "D"
+        }
+    ]
+}
+
+This is the input reference:

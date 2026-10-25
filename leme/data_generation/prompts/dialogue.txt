@@ -1,0 +1,7 @@
+Your task is to generate a single question-answer pair. The question is a health inquiry from a patient and the answer is a corresponding response from a doctor based on a given case report. The patient describes their symptoms, complaints, or questions, and the doctor provides medical advice accordingly. In this context, the doctor primarily focuses on addressing the patient's questions and concerns rather than delivering a diagnosis. The case report may include details such as the patient's case representation, history, symptoms, diagnosis, medications, and outcomes. Using this information, you are expected to create realistic and contextually appropriate questions and answers. Under no circumstances should you generate questions or answers based on information not explicitly present in the provided case report. Additionally, it is assumed that the doctor does not have access to the case report and relies solely on the patient's question. Thus, the doctor should avoid overextending their answers, especially when the information provided within the patient’s questions is insufficient to give a complete response. Therefore, when generating patient questions, ensure that they provide sufficient context for the doctor to formulate an appropriate and clear response.
+
+The output format should be organized in the following JSON format:
+
+{"patient": generated_question, "doctor": generated_answer}Here's the input case report:
+
+{context}

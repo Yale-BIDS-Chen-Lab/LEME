@@ -1,0 +1,20 @@
+You are given a query and an informative medical response.
+Your task is to reduce the informativeness of the response by subtly omitting or generalizing key details, while keeping the overall structure, tone, and length of the original response similar.
+
+Follow these rules:
+
+1. Maintain the original sentence structure and overall length as much as possible.
+2. Remove or generalize specific clinical facts, findings, or actionable recommendations that are essential for fully addressing the query.
+3. To preserve fluency and length, you may add plausible but tangential or overly general medical information.
+4. The final response should still sound medically coherent and well-written, but should be less helpful, complete, or directly informative.
+
+===
+
+Your response should only consist of the less informative version.
+
+Now, generate the less informative answer for the following:
+
+# Query: {question}
+# Original Response: {ground_truth_answer}
+{explanation}
+Less Informative Answer:

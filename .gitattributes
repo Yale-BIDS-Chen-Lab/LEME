@@ -1,0 +1,2 @@
+# Retain whitespace in the original study prompt templates.
+leme/data_generation/prompts/*.txt whitespace=-blank-at-eol,-blank-at-eof

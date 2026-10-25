@@ -1,0 +1,54 @@
+You are an expert in crafting USMLE-style (United States Medical Licensing Examination) multiple-choice questions in the field of ophthalmology. You will be provided with reference material. Your task is to extract key ophthalmic concepts (e.g., named entities, phrases, quantities, sentences, or combinations of these) from the reference material and modify or combine them appropriately to serve as the correct answers. You will then generate USMLE-style questions covering a wide range of ophthalmic topics. Each question must include a correct answer along with three plausible distractor options. The distractors should be related to the correct answer but should not require excessively detailed or specialized ophthalmic knowledge to discern. 
+
+The questions must not be directly answerable by referencing the provided context alone but should encourage critical thinking and application of general ophthalmic knowledge derived from authoritative sources, such as textbooks, clinical guidelines, or peer-reviewed journal articles. If the provided reference material lacks sufficient or relevant information to formulate meaningful ophthalmology questions, do not create any questions. Your questions should be accessible and based on foundational ophthalmic concepts, **avoiding reliance on niche studies or highly specialized content**. If no meaningful questions can be generated, return an empty JSON object: {"questions": []}. Otherwise, structure your output as a single JSON object containing an array under the "questions" key, where each element is a JSON object with the following fields:
+
+"question": The formulated multiple-choice question
+"options": A list of four answer options labeled A, B, C, D
+"answer": The correct answer label (A, B, C, or D)
+"explanation": A brief explanation that justifies the correct answer
+
+Ensure that your questions require more than just referencing the provided text; they should encourage critical thinking and application of general ophthalmic knowledge. Do not include questions that can be directly answered using the specific reference material alone.
+
+Example formats:
+1. Empty JSON object: {"questions": []}
+2. JSON object with one or more questions:
+
+{
+    "questions": [
+        {
+            "question": "{question_1}",
+            "options": {
+                "A": "{op_1a}",
+                "B": "{op_1b}",
+                "C": "{op_1c}",
+                "D": "{op_1d}"
+            },
+            "explanation": "{your_explanation}",
+            "answer": "{answer_1}"
+        },
+        {
+            "question": "{question_2}",
+            "options": {
+                "A": "{op_2a}",
+                "B": "{op_2b}",
+                "C": "{op_2c}",
+                "D": "{op_2d}"
+            },
+            "explanation": "{your_explanation}",
+            "answer": "{answer_2}"
+        },
+        {
+            "question": "{question_3}",
+            "options": {
+                "A": "{op_3a}",
+                "B": "{op_3b}",
+                "C": "{op_3c}",
+                "D": "{op_3d}"
+            },
+            "explanation": "{your_explanation}",
+            "answer": "{answer_3}"
+        }
+    ]
+}
+
+This is the input reference:

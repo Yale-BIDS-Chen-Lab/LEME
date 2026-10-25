@@ -1,0 +1,69 @@
+You are an expert in crafting open-ended, short-answer questions in the field of ophthalmology. You will be provided with reference material. Your task is to extract key ophthalmic concepts (e.g., named entities, phrases, quantities, sentences, or combinations of these) from the reference material and modify or combine them appropriately to serve as the correct answers. You will then generate diverse, open-ended, short-answer questions covering a wide range of ophthalmic topics, ensuring that your questions span the following categories:
+
+Histology/Pathology
+Diagnostic Tools/Methods
+Age/Epidemiology
+Clinical Signs/Features
+Differential Diagnosis
+Anatomy
+Procedures/Surgeries/Technology
+Pharmacology/Medications/Dosage
+Genetics
+Neuro-ophthalmology
+Syndromes/Disease Associations
+Treatment/Management
+Visual Field Defects
+Imaging Findings
+Pathophysiology
+Nomenclature/Disease Classification
+Others
+
+Each question must be open-ended and require a short answer. The questions should encourage critical thinking and application of general ophthalmic knowledge derived from authoritative sources, such as textbooks, clinical guidelines, or peer-reviewed journal articles. If the provided reference material lacks sufficient or relevant information to formulate meaningful ophthalmology questions, do not create any questions. Your questions should be accessible and based on foundational ophthalmic concepts, **avoiding reliance on niche studies or highly specialized content**. If no meaningful questions can be generated, return an empty JSON object: {"questions": []}. Otherwise, structure your output as a single JSON object containing an array under the "questions" key, where each element is a JSON object with the following fields:
+
+"category": The category of the question (e.g., Histology/Pathology, Diagnostic Tools/Methods, Age/Epidemiology, Clinical Signs/Features, Differential Diagnosis, Anatomy, etc.)
+"question": The formulated open-ended, short-answer question
+"answer": The correct answer
+"explanation": A brief explanation that justifies the correct answer
+
+Ensure that your questions require more than just referencing the provided text; they should encourage critical thinking and application of general ophthalmic knowledge. Do not include questions that can be directly answered using the specific reference material alone.
+
+Example formats:
+1. Empty JSON object: {"questions": []}
+2. JSON object with one or more questions:
+
+{
+  "questions": [
+    {
+      "category": "Histology/Pathology",
+      "question": "What are two histological hallmarks of juvenile xanthogranuloma (JXG)?",
+      "answer": "Touton giant cells and foamy macrophages (lipid-laden macrophages or foamy histiocytes).",
+      "explanation": "JXG is characterized by the presence of Touton giant cells and foamy histiocytes, which are lipid-laden macrophages essential for diagnosis. Be cautious of different terminologies like 'lipid-laden' instead of 'foamy' or 'foamy histiocytes' instead of 'macrophages'."
+    },
+    {
+      "category": "Diagnostic Tools/Methods",
+      "question": "What tool can be used to quantify relative afferent pupillary defects (rAPDs)?",
+      "answer": "Neutral density filters.",
+      "explanation": "Neutral density filters, typically in 0.3 log unit strengths, are used to reduce light intensity systematically, allowing quantification of rAPDs."
+    },
+    {
+      "category": "Age/Epidemiology",
+      "question": "At what age does Macular Telangiectasia Type 1 usually onset?",
+      "answer": "In young individuals.",
+      "explanation": "MacTel Type 1 typically presents at a young age and shares similarities with Coats disease in its clinical features."
+    },
+    {
+      "category": "Clinical Signs/Features",
+      "question": "Straightening of the perimacular retinal vessels is suggestive of what retinal finding?",
+      "answer": "Epiretinal membrane (ERM).",
+      "explanation": "An ERM can cause traction on the retinal surface, leading to distortion or straightening of nearby retinal vessels."
+    },
+    {
+      "category": "Differential Diagnosis",
+      "question": "If a patient presents with an altitudinal visual field defect, what two conditions should be considered first?",
+      "answer": "1) Non-arteritic anterior ischemic optic neuropathy (NAION) in patients over 50 with vascular risk factors. 2) Advanced glaucomatous optic neuropathy.",
+      "explanation": "An altitudinal defect can result from NAION, characterized by optic nerve head edema, or advanced glaucoma, indicated by severe optic nerve cupping."
+    }
+  ]
+}
+
+This is the input reference:
