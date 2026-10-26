@@ -215,6 +215,11 @@ Kim, H., Ai, X., Srinivasan, S. et al.
 
 Citation metadata is also available in [CITATION.cff](CITATION.cff).
 
+## Disclaimer
+
+The information produced on this website is not intended for direct diagnostic use or medical decision-making without review and oversight by a clinical professional. Individuals should not change their health behavior solely on the basis of information produced on this website
+
+
 ## License
 
 LEME code, models, data, and other related materials may be used for non-commercial research purposes. Any derivative works must be made publicly available through a public platform, such as GitHub or Hugging Face. For commercial-use inquiries, please contact us (`agreements@yale.edu` or `qingyu.chen@yale.edu`). Please see the [LICENSE file](LICENSE) for the full terms.
