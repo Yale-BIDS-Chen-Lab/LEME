@@ -1,14 +1,8 @@
 # LEME: Open Large Language Models for Ophthalmology
 
-LEME is a family of open-weight language models for ophthalmology, designed
-to support research in clinical reasoning, patient communication, and
-clinical information extraction. The models can be deployed locally and
-adapted to ophthalmology workflows.
+LEME is a family of open-weight large language models for ophthalmology, developed through a two-stage framework that combines supervised instruction tuning with preference optimization. It is designed to support ophthalmology-specific applications, including clinical reasoning, patient communication, and clinical information extraction, with support for local deployment and adaptation to different workflows.
 
-Built on Meta-Llama-3-70B-Instruct, LEME combines supervised instruction tuning
-with preference optimization to improve the truthfulness and informativeness
-of responses. The study evaluates both models on five open-ended benchmarks
-and three downstream tasks using real patient data and ophthalmologist review.
+The currently released LEME models are built on Meta-Llama-3-70B-Instruct and include supervised fine-tuned and preference-optimized variants. The study evaluates both models across five open-ended benchmarks and three downstream clinical tasks using real-world patient data, including specialist evaluation.
 
 [Paper - npj Digital Medicine (2026)](https://doi.org/10.1038/s41746-026-03104-4)
 · [Models](#models)
@@ -217,12 +211,12 @@ Citation metadata is also available in [CITATION.cff](CITATION.cff).
 
 ## Disclaimer
 
-The information produced on this website is not intended for direct diagnostic use or medical decision-making without review and oversight by a clinical professional. Individuals should not change their health behavior solely on the basis of information produced on this website
+The information produced on this website is not intended for direct diagnostic use or medical decision-making without review and oversight by a clinical professional. Individuals should not change their health behavior solely on the basis of information produced on this website.
 
 
 ## License
 
-LEME code, models, data, and other related materials may be used for non-commercial research purposes. Any derivative works must be made publicly available through a public platform, such as GitHub or Hugging Face. For commercial-use inquiries, please contact us (`agreements@yale.edu` or `qingyu.chen@yale.edu`). Please see the [LICENSE file](LICENSE) for the full terms.
+LEME code, models, data, and other related materials may be used for non-commercial research purposes subject to the terms specified in the [LICENSE file](LICENSE) and the applicable third-party licenses and dataset terms. Any derivative works must be made publicly available through a public platform, such as GitHub or Hugging Face. For commercial-use inquiries, please contact us (`agreements@yale.edu` and `qingyu.chen@yale.edu`). Please see the [LICENSE file](LICENSE) for the full terms.
 
 Model and dataset repositories include their applicable third-party terms.
 See [NOTICE](NOTICE) for source-code attribution and retained upstream licenses.
